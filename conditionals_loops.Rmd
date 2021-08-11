@@ -1,0 +1,73 @@
+---
+title: "conditionals_loops"
+author: "Desik Somasundaram"
+date: "8/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Conditional Staments
+
+```{r}
+pm2_5 <- 200
+
+if (pm2_5 < 100) {
+  print("Low to Moderate Risks")
+} else if (100 <= pm2_5 & pm2_5 < 150) {
+  print("Unhealthy for sensitive groups")
+} else if (pm2_5 >= 150) {
+  print("Health Risk Present")
+}
+
+```
+```{r}
+species <- "blue whale"
+if (species == "blue whale"){
+  print("You found a whale!")
+}
+```
+```{r}
+max_airtemp_c <- 22
+if (max_airtemp_c > 27){
+  print("Temperature too high")
+} else {
+  "Temperature OK"
+}
+```
+```{r}
+base_burrito <- 6.50
+main_ingredient = "steak"
+
+if (main_ingredient == "veggie"){
+  burrito_price <- base_burrito + 0
+} else if (main_ingredient == "chicken"){
+  burrito_price <- base_burrito + 3.00
+} else if (main_ingredient == "steak"){
+  burrito_price <- base_burrito + 3.25
+}
+  print(burrito_price)
+
+```
+```{r}
+fish <- c(8, 10, 12, 23)
+
+for (i in seq_along(fish)) {
+  fish_prop <- fish[i]/ sum(fish)
+  print(fish_prop)
+}
+
+
+```
+
+```{r}
+for (i in seq_along(month.name)) {
+  msg <- paste(month.name[i], "is month", as.character(i))
+  print(msg)
+}
+
+```
+
+

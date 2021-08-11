@@ -1,0 +1,46 @@
+---
+title: "toolik_chem"
+author: "Desik Somasundaram"
+date: "8/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(janitor)
+```
+
+## Read in File
+```{r}
+toolik_biochem <- read_csv(here("data", "2011_Kling_Akchem.csv"), na = ".") %>%  clean_names()
+```
+## Subset
+
+```{r}
+inlet_biochem <-toolik_biochem %>% 
+  filter(site == "Toolik Inlet") %>%
+  select(p_h, doc_u_m, tdn_u_m)
+  
+                  
+```
+
+
+## Mean of subset
+
+```{r}
+mean_inlet_biochem <- vector(mode = "numeric", length = ncol(inlet_biochem))
+
+for (i in 1:ncol(inlet_biochem)) {
+  mean_val <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  mean_inlet_biochem[[i]] <-mean_val
+}
+
+mean_inlet_biochem
+
+apply(inlet_biochem, 2, mean, na.rm = TRUE)
+
+map_df(inlet_biochem, mean, na.rm =TRUE)
+```
+
